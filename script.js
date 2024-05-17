@@ -1,27 +1,68 @@
 var stolen=[
-    [0,0,0]
-    [0,0,0]
+    [0,0,0],
+    [0,0,0],
     [0,0,0]
 ]
 
+var player="x"
+var computer = "o"
+function attach00(){
+    if(stolen[0][0]===0) {
+        document.getElementById("00").innerText =player;
+        stolen[0][0]=1
+    }
+}
+function attach01(){
+    if(stolen[0][1]===0) {
+        document.getElementById("01").innerText =player;
+        stolen[0][1]=1
+    }
+}
+function attach02(){
+    if(stolen[0][2]===0) {
+        document.getElementById("02").innerText =player;
+        stolen[0][2]=1
+    }
+}
+function attach10(){
+    if(stolen[1][0]===0) {
+        document.getElementById("10").innerText =player;
+        stolen[1][0]=1
+    }
+}
+function attach11(){
+    if(stolen[1][1]===0) {
+        document.getElementById("11").innerText =player;
+        stolen[1][1]=1
+    }
+}
+function attach12(){
+    if(stolen[1][2]===0) {
+        document.getElementById("12").innerText =player;
+        stolen[1][2]=1
+    }
+}
+function attach20(){
+    if(stolen[2][0]===0) {
+        document.getElementById("20").innerText =player;
+        stolen[2][0]=1
+    }
+}
+function attach21(){
+    if(stolen[2][1]===0) {
+        document.getElementById("21").innerText =player;
+        stolen[2][1]=1
+    }
+}
+function attach22(){
+    if(stolen[2][2]===0) {
+        document.getElementById("22").innerText =player;
+        stolen[2][2]=1
+    }
+}
 
-function check(player) {
-    for(let row =0;row<3; row++){
-        if(stolen[row][0]===player && stolen[row][1]===player&& stolen[row][2]===player){
-            return true;
-        }
-    }
-    for(let col =0;col<3; col++){
-        if(stolen[col][0]===player && stolen[col][1]===player&& stolen[col][2]===player){
-            return true;
-        }
-    }
-    if(stolen[0][0]===player && stolen[1][1]===player&& stolen[2][2]===player){
-        return true;
-    }
-    if(stolen[2][0]===player && stolen[1][1]===player&& stolen[0][2]===player){
-        return true;
-    }
+function checkBoard() {
+
 }
 
 
