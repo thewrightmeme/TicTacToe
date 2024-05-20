@@ -7,15 +7,22 @@
     <title>Title</title>
 </head>
 <body>
-<div id="board" onload=""></div>
-    <button id="00" class="ticTac" onclick="attach00()" >_</button>
-    <button id="01" class="ticTac" onclick="attach01()">_</button>
-    <button id="02" class="ticTac" onclick="attach02()">_</button>
-    <button id="10" class="ticTac" onclick="attach10()">_</button>
-    <button id="11" class="ticTac" onclick="attach11()">_</button>
-    <button id="12" class="ticTac" onclick="attach12()">_</button>
-    <button id="20" class="ticTac" onclick="attach20()">_</button>
-    <button id="21" class="ticTac" onclick="attach21()">_</button>
-    <button id="22" class="ticTac" onclick="attach22()">_</button>
+<button id="1player">1 PLAYER</button>
+<button id="2player">2 PLAYERS</button>
+<p id="turn" >PLAYER1'S TURN</p>
+<div id="board">
+    <button id="00" class="ticTac" onclick="attach(0,0)" >_</button>
+    <button id="01" class="ticTac" onclick="attach(0,1)">_</button>
+    <button id="02" class="ticTac" onclick="attach(0,2)">_</button>
+    <button id="10" class="ticTac" onclick="attach(1,0)">_</button>
+    <button id="11" class="ticTac" onclick="attach(1,1)">_</button>
+    <button id="12" class="ticTac" onclick="attach(1,2)">_</button>
+    <button id="20" class="ticTac" onclick="attach(2,0)">_</button>
+    <button id="21" class="ticTac" onclick="attach(2,1)">_</button>
+    <button id="22" class="ticTac" onclick="attach(2,2)">_</button>
+</div>
+
+<p id="displayWinner"></p>
+
 </body>
 </html>

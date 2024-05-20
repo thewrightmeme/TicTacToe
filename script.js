@@ -4,65 +4,117 @@ var stolen=[
     [0,0,0]
 ]
 
-var player="x"
-var computer = "o"
-function attach00(){
-    if(stolen[0][0]===0) {
-        document.getElementById("00").innerText =player;
-        stolen[0][0]=1
+var stolen2=[
+    [0,0,0],
+    [0,0,0],
+    [0,0,0]
+]
+
+drawOrNot=false
+let turn =1
+let player="X"
+let computer = "O"
+
+function attach(r,c){
+    if(stolen[r][c]===0){
+        if(turn===1){
+            turn=0
+            document.getElementById(r.toString()+c.toString()).innerHTML=player;
+            stolen[r][c]=1
+            stolen2[r][c]=2
+            document.getElementById("turn").innerHTML="PLAYER2'S TURN";
+        }
+        else if(turn===0){
+            turn=1
+            document.getElementById(r.toString()+c.toString()).innerHTML=computer;
+            stolen[r][c]=1
+            stolen2[r][c]=3
+            document.getElementById("turn").innerHTML="PLAYER1'S TURN";
+        }
     }
-}
-function attach01(){
-    if(stolen[0][1]===0) {
-        document.getElementById("01").innerText =player;
-        stolen[0][1]=1
-    }
-}
-function attach02(){
-    if(stolen[0][2]===0) {
-        document.getElementById("02").innerText =player;
-        stolen[0][2]=1
-    }
-}
-function attach10(){
-    if(stolen[1][0]===0) {
-        document.getElementById("10").innerText =player;
-        stolen[1][0]=1
-    }
-}
-function attach11(){
-    if(stolen[1][1]===0) {
-        document.getElementById("11").innerText =player;
-        stolen[1][1]=1
-    }
-}
-function attach12(){
-    if(stolen[1][2]===0) {
-        document.getElementById("12").innerText =player;
-        stolen[1][2]=1
-    }
-}
-function attach20(){
-    if(stolen[2][0]===0) {
-        document.getElementById("20").innerText =player;
-        stolen[2][0]=1
-    }
-}
-function attach21(){
-    if(stolen[2][1]===0) {
-        document.getElementById("21").innerText =player;
-        stolen[2][1]=1
-    }
-}
-function attach22(){
-    if(stolen[2][2]===0) {
-        document.getElementById("22").innerText =player;
-        stolen[2][2]=1
-    }
+    winOrLoss()
 }
 
-function checkBoard() {
+function winOrLoss(){
+    if(stolen2[0][2]===2&&stolen2[1][1]===2&&stolen2[2][0]===2) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER1 WINS"
+        noMore()
+    }
+    else if(stolen2[0][0]===2&&stolen2[1][1]===2&&stolen2[2][2]===2) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER1 WINS"
+        noMore()
+    }
+    else if(stolen2[0][0]===2&&stolen2[0][1]===2&&stolen2[0][2]===2) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER1 WINS"
+        noMore()
+    }
+    else if(stolen2[1][0]===2&&stolen2[1][1]===2&&stolen2[1][2]===2) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER1 WINS"
+        noMore()
+    }
+    else if(stolen2[2][0]===2&&stolen2[2][1]===2&&stolen2[2][2]===2) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER1 WINS"
+        noMore()
+    }
+    else if(stolen2[0][0]===2&&stolen2[1][0]===2&&stolen2[2][0]===2) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER1 WINS"
+        noMore()
+    }
+    else if(stolen2[0][1]===2&&stolen2[1][1]===2&&stolen2[2][1]===2) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER1 WINS"
+        noMore()
+    }
+    else if(stolen2[0][2]===2&&stolen2[1][2]===2&&stolen2[2][2]===2) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER1 WINS"
+        noMore()
+    }
+    else if(stolen2[0][2]===3&&stolen2[1][1]===3&&stolen2[2][0]===3) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER2 WINS"
+        noMore()
+    }
+    else if(stolen2[0][0]===3&&stolen2[1][1]===3&&stolen2[2][2]===3) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER2 WINS"
+        noMore()
+    }
+    else if(stolen2[0][0]===3&&stolen2[0][1]===3&&stolen2[0][2]===3) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER2 WINS"
+        noMore()
+    }
+    else if(stolen2[1][0]===3&&stolen2[1][1]===3&&stolen2[1][2]===3) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER2 WINS"
+        noMore()
+    }
+    else if(stolen2[2][0]===3&&stolen2[2][1]===3&&stolen2[2][2]===3) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER2 WINS"
+        noMore()
+    }
+    else if(stolen2[0][0]===3&&stolen2[1][0]===3&&stolen2[2][0]===3) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER2 WINS"
+        noMore()
+    }
+    else if(stolen2[0][1]===3&&stolen2[1][1]===3&&stolen2[2][1]===3) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER2 WINS"
+        noMore()
+    }
+    else if(stolen2[0][2]===3&&stolen2[1][2]===3&&stolen2[2][2]===3) {
+        document.getElementById("displayWinner").innerHTML = "PLAYER2 WINS"
+        noMore()
+    }
 
 }
+
+
+function noMore() {
+    stolen=[0][0]=1
+    stolen=[0][1]=1
+    stolen=[0][2]=1
+    stolen=[1][0]=1
+    stolen=[1][1]=1
+    stolen=[1][2]=1
+    stolen=[2][0]=1
+    stolen=[2][1]=1
+    stolen=[2][2]=1
+}
+
 
 

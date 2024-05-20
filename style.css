@@ -1,3 +1,11 @@
-#board{
-
+#board {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 150px);
 }
+
+.ticTac{
+    font-size: 100px;
+}
+
+
