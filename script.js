@@ -14,7 +14,7 @@ var stolen2 = [
 let turn = 1
 let player = "X"
 let computer = "O"
-
+let computerEnabled = false
 function attach(r, c) {
     if (stolen[r][c] === 0) {
         if (turn === 1) {
@@ -23,7 +23,25 @@ function attach(r, c) {
             stolen[r][c] = 1
             stolen2[r][c] = 2
             document.getElementById("turn").innerHTML = "PLAYER2'S TURN";
-        } else if (turn === 0) {
+        }
+        else if(turn===0&& computerEnabled === true){
+            //Current error: computer only picks a spot if player 2 clicks again
+            while(true) {
+                let r1=Math.floor(Math.random()*3)
+                let c1=Math.floor(Math.random()*3)
+                if (stolen[r1][c1] === 0) {
+                    if(turn===0){
+                        turn=1
+                        document.getElementById(r1.toString() + c1.toString()).innerHTML = computer;
+                        stolen[r1][c1] = 1
+                        stolen2[r1][c1] = 3
+                        document.getElementById("turn").innerHTML = "PLAYER1'S TURN";
+                        break;
+                    }
+                }
+            }
+        }
+        else if (turn === 0 && computerEnabled === false) {
             turn = 1
             document.getElementById(r.toString() + c.toString()).innerHTML = computer;
             stolen[r][c] = 1
@@ -34,21 +52,8 @@ function attach(r, c) {
     winOrLoss()
 }
 
-function computer1() {
-    //computer picks RANDOM SPOT IN ARRAY (that isn't already taken) to place an "O" in that spot
-    //When pressing the "1 PLAYER" button, this code begin to act after the player goes first (player is turn 1, computer is turn 0)
-    //
-    for (let r1 = 0; r1 >= 0 && r < 3;r1++) {
-        for (let c1 = 0; c1 >= 0 && c1 < 3;c1++) {
-            if (stolen[r1][c1] === 0) {
-                if(turn===0){
-                    turn=1
-                    r1=Math.floor(Math.random())
-                }
-        }
-    }
-    }
-
+function computerEnabler() {
+    computerEnabled =true
 }
 
 function winOrLoss() {
