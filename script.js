@@ -14,32 +14,15 @@ var stolen2 = [
 let turn = 1
 let player = "X"
 let computer = "O"
-let computerEnabled = false
+let computerEnabled = null
 function attach(r, c) {
     if (stolen[r][c] === 0) {
-        if (turn === 1) {
+        if (turn === 1 && computerEnabled !== null) {
             turn = 0
             document.getElementById(r.toString() + c.toString()).innerHTML = player;
             stolen[r][c] = 1
             stolen2[r][c] = 2
             document.getElementById("turn").innerHTML = "PLAYER2'S TURN";
-        }
-        else if(turn===0&& computerEnabled === true){
-            //Current error: computer only picks a spot if player 2 clicks again
-            while(true) {
-                let r1=Math.floor(Math.random()*3)
-                let c1=Math.floor(Math.random()*3)
-                if (stolen[r1][c1] === 0) {
-                    if(turn===0){
-                        turn=1
-                        document.getElementById(r1.toString() + c1.toString()).innerHTML = computer;
-                        stolen[r1][c1] = 1
-                        stolen2[r1][c1] = 3
-                        document.getElementById("turn").innerHTML = "PLAYER1'S TURN";
-                        break;
-                    }
-                }
-            }
         }
         else if (turn === 0 && computerEnabled === false) {
             turn = 1
@@ -50,10 +33,34 @@ function attach(r, c) {
         }
     }
     winOrLoss()
+    computer1()
+    winOrLoss()
 }
+function computer1() {
+    if(turn===0&& computerEnabled === true){
+        //Current error: computer only picks a spot if player 2 clicks again
+        while(true) {
+            let r1=Math.floor(Math.random()*3)
+            let c1=Math.floor(Math.random()*3)
+            if (stolen[r1][c1] === 0) {
+                if(turn===0){
+                    turn=1
+                    document.getElementById(r1.toString() + c1.toString()).innerHTML = computer;
+                    stolen[r1][c1] = 1
+                    stolen2[r1][c1] = 3
+                    document.getElementById("turn").innerHTML = "PLAYER1'S TURN";
+                    break;
+                }
+            }
+        }
+    }
 
+}
 function computerEnabler() {
     computerEnabled =true
+}
+function computerDisabler(){
+    computerEnabled = false
 }
 
 function winOrLoss() {
